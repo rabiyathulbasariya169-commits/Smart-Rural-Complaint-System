@@ -1,27 +1,27 @@
-# 🌿 Smart Rural Complaint Management System
+#  Smart Rural Complaint Management System
 
-## 📖 About the Project
+##  About the Project
 
 The Smart Rural Complaint Management System is a web-based application developed to help citizens register complaints easily and enable authorities to manage and resolve them efficiently.
 
 The system provides a secure complaint registration process, complaint tracking, and an interactive admin dashboard with analytics and chart-based visualization.
 
-## ✨ Features
+##  Features
 
-- 🔐 Secure Login System
-- 👤 User Registration
-- 📝 Complaint Registration
-- 📱 Mobile Number Validation
-- 🌐 English & Tamil Language Support
-- 🛡 CAPTCHA Verification
-- 📊 Admin Dashboard with Charts
-- 📍 Village-wise Complaint Analytics
-- 📅 Daily Complaint Tracking
-- 📤 Export Complaints as CSV
-- ✅ Complaint Status Management (Pending / Resolved)
-- 🚪 Logout Functionality
+-  Secure Login System
+-  User Registration
+-  Complaint Registration
+-  Mobile Number Validation
+-  English & Tamil Language Support
+-  CAPTCHA Verification
+-  Admin Dashboard with Charts
+-  Village-wise Complaint Analytics
+-  Daily Complaint Tracking
+-  Export Complaints as CSV
+-  Complaint Status Management (Pending / Resolved)
+-  Logout Functionality
 
-## 💻 Technologies Used
+##  Technologies Used
 
 - Python
 - Flask
@@ -31,7 +31,7 @@ The system provides a secure complaint registration process, complaint tracking,
 - SQLite
 - Chart.js
 
-## 📂 Project Structure
+##  Project Structure
 
 ```
 Rural_Pro
@@ -54,7 +54,7 @@ Rural_Pro
 └── .gitignore
 ```
 
-## 📷 Screenshots
+##  Screenshots
 
 ### Login Page
 
@@ -104,7 +104,7 @@ python app.py
 http://127.0.0.1:5000
 ```
 
-## 🚀 Future Enhancements
+##  Future Enhancements
 
 - Email Verification
 - SMS OTP Integration
@@ -115,10 +115,14 @@ http://127.0.0.1:5000
 - PDF Report Generation
 - Mobile Application
 
-## 👩‍💻 Developer
+##  Developer
 
 **Rabiyathul Basariya**
 
 Second Year Computer Science Engineering Student
 
 Passionate about Web Development and Problem Solving.
+
+## Login Page
+
+![](static/images/login.png)
