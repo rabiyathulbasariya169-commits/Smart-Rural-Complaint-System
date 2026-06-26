@@ -1,0 +1,270 @@
+/* ================= GLOBAL ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Gradient Background */
+.bg, .login-bg {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #fbc2eb, #a18cd1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Headings */
+h2, h3 {
+    text-align: center;
+    color: #7b1fa2;
+    margin-bottom: 15px;
+}
+
+/* ================= LOGIN PAGE ================= */
+
+.login-container {
+    display: flex;
+    width: 750px;
+    height: 420px;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* Left form */
+.login-form {
+    width: 50%;
+    padding: 40px;
+    text-align: center;
+}
+
+.login-form input,
+.login-form select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.login-form button {
+    width: 100%;
+}
+
+/* Right design */
+.login-design {
+    width: 50%;
+    background: linear-gradient(135deg, #ff4081, #7b1fa2);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ================= FORM (REPORT PAGE) ================= */
+
+.form-container {
+    width: 80%;
+    max-width: 900px;
+    background: rgba(255,255,255,0.95);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* Grid layout */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+/* Inputs */
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    outline: none;
+    transition: 0.3s;
+}
+
+/* Focus effect */
+input:focus, textarea:focus, select:focus {
+    border-color: #ab47bc;
+    box-shadow: 0 0 6px rgba(171, 71, 188, 0.5);
+}
+
+/* Textarea */
+textarea {
+    height: 100px;
+}
+
+/* Full width elements */
+textarea, button {
+    grid-column: span 2;
+}
+
+/* ================= BUTTON ================= */
+
+button, .btn {
+    background: linear-gradient(to right, #ff4081, #7b1fa2);
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+    background: linear-gradient(to right, #ec407a, #6a1b9a);
+}
+
+/* ================= TABLE (DASHBOARD) ================= */
+
+.table-container {
+    width: 90%;
+    margin: auto;
+    background: rgba(255,255,255,0.95);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background: #ab47bc;
+    color: white;
+}
+
+td, th {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+/* ================= STATUS ================= */
+
+.status {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.status.Pending {
+    background: #ff9800;
+    color: white;
+}
+
+.status.Resolved {
+    background: #4caf50;
+    color: white;
+}
+
+/* ================= ADMIN DASHBOARD ================= */
+
+.container {
+    display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 220px;
+    height: 100vh;
+    background: #7b1fa2;
+    color: white;
+    padding: 20px;
+}
+
+.sidebar h2 {
+    color: white;
+}
+
+.sidebar a {
+    display: block;
+    color: white;
+    margin: 10px 0;
+    text-decoration: none;
+}
+
+/* Main */
+.main {
+    flex: 1;
+    padding: 20px;
+}
+
+/* Cards */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.card {
+    padding: 20px;
+    border-radius: 12px;
+    color: white;
+    text-align: center;
+}
+
+.card1 { background: linear-gradient(to right, #ff4081, #f50057); }
+.card2 { background: linear-gradient(to right, #ab47bc, #7b1fa2); }
+.card3 { background: linear-gradient(to right, #42a5f5, #1e88e5); }
+.card4 { background: linear-gradient(to right, #26c6da, #0097a7); }
+
+/* Charts */
+.chart-box {
+    background: white;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+/* ================= ERROR ================= */
+
+.error {
+    background: #ffcdd2;
+    color: #c62828;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+/* ================= MOBILE RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+
+    .login-container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .login-form, .login-design {
+        width: 100%;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cards {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    textarea, button {
+        grid-column: span 1;
+    }
+}

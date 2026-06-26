@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dashboard</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body class="bg">
+
+<div class="glass wide">
+
+<h2>📊 Authority Dashboard</h2>
+
+
+<table border="1" cellpadding="10">
+
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Mobile</th>
+<th>Village</th>
+<th>Category</th>
+<th>Issue</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+
+{% for row in data %}
+<tr>
+<td>{{row[0]}}</td>
+<td>{{row[1]}}</td>
+<td>{{row[2]}}</td>
+<td>{{row[3]}}</td>
+<td>{{row[4]}}</td>
+<td>{{row[5]}}</td>
+
+<td>
+    {% if row[6] == 'Pending' %}
+        <span style="color:red;">Pending</span>
+    {% else %}
+        <span style="color:green;">Resolved</span>
+    {% endif %}
+</td>
+
+<td>
+    {% if row[6] == 'Pending' %}
+        <a href="/update_status/{{row[0]}}/Resolved">
+            <button style="background:green;color:white;">Mark Resolved</button>
+        </a>
+    {% else %}
+        <a href="/update_status/{{row[0]}}/Pending">
+            <button style="background:orange;">Mark Pending</button>
+        </a>
+    {% endif %}
+</td>
+
+</tr>
+{% endfor %}
+
+</table>
+
+<a href="/" class="btn">Home</a>
+
+</div>
+
+</body>
+</html>

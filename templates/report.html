@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Complaint Register</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body class="bg">
+
+<div class="form-container">
+
+<h2>🌿 Rural Complaint Register</h2>
+
+<!-- Language (placed safely, no layout break) -->
+<div style="text-align:right;">
+<select onchange="changeLang(this.value)">
+    <option value="en">English</option>
+    <option value="ta">தமிழ்</option>
+</select>
+</div>
+
+<!-- ERROR MESSAGE -->
+{% if error %}
+<div class="error">{{ error }}</div>
+{% endif %}
+
+<form method="POST">
+
+<div class="grid">
+
+<!-- NAME -->
+<div>
+<label id="nameLabel">Name</label>
+<input type="text" name="name" placeholder="Enter Name" required>
+</div>
+
+<!-- MOBILE -->
+<div>
+<label id="mobileLabel">Mobile Number</label>
+<input type="text" name="mobile" placeholder="Enter Mobile Number" pattern="[0-9]{10}" required>
+<small id="mobileHint">Mobile number must be 10 digits.</small>
+</div>
+
+<!-- LOCATION -->
+<div>
+<label id="locationLabel">Village Name</label>
+<input type="text" name="location" placeholder="Enter Village Name" required>
+</div>
+
+<!-- CATEGORY -->
+<div>
+<label id="categoryLabel">Complaint Category</label>
+<select name="category">
+<option>Road / சாலை</option>
+<option>Water / தண்ணீர்</option>
+<option>Electricity / மின்சாரம்</option>
+<option>Sanitation / சுகாதாரம்</option>
+</select>
+</div>
+
+<!-- CAPTCHA -->
+<div>
+<label id="captchaLabel">CAPTCHA Question</label>
+<p id="captchaQ"></p>
+<input type="text" name="captcha" placeholder="Enter answer" required>
+<button type="button" onclick="generateCaptcha()" id="captchaBtn">New CAPTCHA</button>
+</div>
+
+<!-- OTP -->
+<div>
+<label id="otpLabel">OTP</label>
+<input type="text" placeholder="Enter OTP">
+<button type="button" id="otpBtn">Request OTP</button>
+<small id="otpHint">Request OTP first.</small>
+</div>
+
+<!-- DESCRIPTION -->
+<div style="grid-column: span 2;">
+<label id="issueLabel">Description</label>
+<textarea name="issue" placeholder="Enter your issue" required></textarea>
+<small id="issueHint">Min 10 characters</small>
+</div>
+
+<!-- IMAGE -->
+<div>
+<label id="imageLabel">Upload Image (optional)</label>
+<input type="file" name="image">
+<small id="imageHint">PNG/JPG up to 2MB</small>
+</div>
+
+<!-- SUBMIT -->
+<div style="grid-column: span 2;">
+<button type="submit" id="submitBtn">Submit Complaint</button>
+</div>
+
+</div>
+
+</form>
+
+</div>
+
+<script>
+let a, b;
+
+// CAPTCHA
+function generateCaptcha(){
+    a = Math.floor(Math.random()*10);
+    b = Math.floor(Math.random()*10);
+    document.getElementById("captchaQ").innerText = a + " + " + b;
+}
+generateCaptcha();
+
+// LANGUAGE SWITCH (ONLY TEXT CHANGE, NO STRUCTURE TOUCH)
+function changeLang(lang){
+
+    if(lang === "ta"){
+        document.getElementById("nameLabel").innerText = "பெயர்";
+        document.getElementById("mobileLabel").innerText = "மொபைல் எண்";
+        document.getElementById("mobileHint").innerText = "10 இலக்க எண் தேவை";
+        document.getElementById("locationLabel").innerText = "கிராமம்";
+        document.getElementById("categoryLabel").innerText = "புகார் வகை";
+        document.getElementById("captchaLabel").innerText = "கேப்ட்சா கேள்வி";
+        document.getElementById("captchaBtn").innerText = "புதிய கேப்ட்சா";
+        document.getElementById("otpLabel").innerText = "OTP";
+        document.getElementById("otpBtn").innerText = "OTP கேட்கவும்";
+        document.getElementById("otpHint").innerText = "முதலில் OTP பெறவும்";
+        document.getElementById("issueLabel").innerText = "விவரம்";
+        document.getElementById("issueHint").innerText = "குறைந்தது 10 எழுத்துகள்";
+        document.getElementById("imageLabel").innerText = "படம் (விருப்பம்)";
+        document.getElementById("imageHint").innerText = "PNG/JPG 2MB வரை";
+        document.getElementById("submitBtn").innerText = "சமர்ப்பிக்கவும்";
+
+        // placeholders (SAFE)
+        document.getElementById("name").placeholder = "பெயர்";
+        document.getElementById("mobile").placeholder = "மொபைல் எண்";
+        document.getElementById("location").placeholder = "கிராமம்";
+        document.getElementById("issue").placeholder = "பிரச்சினை எழுதவும்";
+        document.getElementById("captcha").placeholder = "பதில்";
+        document.getElementById("otp").placeholder = "OTP";
+    }
+    else{
+        document.getElementById("nameLabel").innerText = "Name";
+        document.getElementById("mobileLabel").innerText = "Mobile Number";
+        document.getElementById("mobileHint").innerText = "Mobile number must be 10 digits.";
+        document.getElementById("locationLabel").innerText = "Village Name";
+        document.getElementById("categoryLabel").innerText = "Complaint Category";
+        document.getElementById("captchaLabel").innerText = "CAPTCHA Question";
+        document.getElementById("captchaBtn").innerText = "New CAPTCHA";
+        document.getElementById("otpLabel").innerText = "OTP";
+        document.getElementById("otpBtn").innerText = "Request OTP";
+        document.getElementById("otpHint").innerText = "Request OTP first.";
+        document.getElementById("issueLabel").innerText = "Description";
+        document.getElementById("issueHint").innerText = "Min 10 characters";
+        document.getElementById("imageLabel").innerText = "Upload Image";
+        document.getElementById("imageHint").innerText = "PNG/JPG up to 2MB";
+        document.getElementById("submitBtn").innerText = "Submit Complaint";
+
+        document.getElementById("name").placeholder = "";
+        document.getElementById("mobile").placeholder = "";
+        document.getElementById("location").placeholder = "";
+        document.getElementById("issue").placeholder = "";
+        document.getElementById("captcha").placeholder = "";
+        document.getElementById("otp").placeholder = "";
+    }
+}
+</script>
+
+</body>
+</html>

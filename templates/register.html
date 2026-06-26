@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Register</title>
+<link rel="stylesheet" href="/static/style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body class="bg">
+
+<div class="login-container">
+
+```
+<!-- LEFT SIDE FORM -->
+<div class="login-form">
+
+    <h2>Create Account</h2>
+    <p style="color:#666;">Register to submit your complaints</p>
+
+    <form method="POST" onsubmit="return validateRegister()">
+
+        <!-- EMAIL -->
+        <input type="email" name="username" id="email" placeholder="Enter Email">
+
+        <!-- PASSWORD -->
+        <div style="position:relative;">
+            <input type="password" name="password" id="password" placeholder="Enter Password">
+            <span onclick="togglePassword()" style="position:absolute; right:10px; top:10px; cursor:pointer;">👁</span>
+        </div>
+
+        <!-- CONFIRM PASSWORD -->
+        <input type="password" id="confirm" placeholder="Confirm Password">
+
+        <!-- PASSWORD STRENGTH -->
+        <small id="strength"></small>
+
+        <!-- BUTTON -->
+        <button type="submit">Register</button>
+
+    </form>
+
+    <p style="margin-top:10px;">
+        Already have an account? <a href="/">Login</a>
+    </p>
+
+    <p id="error" style="color:red;"></p>
+
+</div>
+
+<!-- RIGHT SIDE DESIGN -->
+<div class="login-design">
+    <h2>🌿 Welcome</h2>
+    <p>Create account to raise complaints easily</p>
+</div>
+```
+
+</div>
+
+<script>
+
+// SHOW/HIDE PASSWORD
+function togglePassword(){
+    let pass = document.getElementById("password");
+    pass.type = pass.type === "password" ? "text" : "password";
+}
+
+// PASSWORD STRENGTH CHECK
+document.getElementById("password").addEventListener("keyup", function(){
+    let val = this.value;
+    let strength = document.getElementById("strength");
+
+    if(val.length < 5){
+        strength.innerText = "Weak password ❌";
+        strength.style.color = "red";
+    }
+    else if(val.length < 8){
+        strength.innerText = "Medium password ⚠️";
+        strength.style.color = "orange";
+    }
+    else{
+        strength.innerText = "Strong password ✅";
+        strength.style.color = "green";
+    }
+});
+
+// FORM VALIDATION
+function validateRegister(){
+
+    let email = document.getElementById("email").value.trim();
+    let password = document.getElementById("password").value.trim();
+    let confirm = document.getElementById("confirm").value.trim();
+    let error = document.getElementById("error");
+
+    let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+    if(!emailPattern.test(email)){
+        error.innerText = "Enter valid email ❌";
+        return false;
+    }
+
+    if(password.length < 5){
+        error.innerText = "Password must be at least 5 characters ❌";
+        return false;
+    }
+
+    if(password !== confirm){
+        error.innerText = "Passwords do not match ❌";
+        return false;
+    }
+
+    error.innerText = "";
+    return true;
+}
+
+</script>
+
+</body>
+</html>

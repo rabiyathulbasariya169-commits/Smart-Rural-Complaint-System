@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    background: linear-gradient(135deg, #ff4ecd, #7b5cff);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* MAIN BOX */
+.container {
+    display: flex;
+    width: 800px;
+    height: 450px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+/* LEFT SIDE */
+.left {
+    width: 50%;
+    background: linear-gradient(135deg, #4b00c9, #9d00ff);
+    color: white;
+    padding: 40px;
+}
+
+.left h1 {
+    margin-top: 50px;
+}
+
+.left p {
+    margin-top: 10px;
+}
+
+/* RIGHT SIDE */
+.right {
+    width: 50%;
+    background: white;
+    padding: 40px;
+}
+
+.right h2 {
+    margin-bottom: 20px;
+}
+
+/* FORM */
+label {
+    font-size: 14px;
+    margin-top: 10px;
+    display: block;
+}
+
+input, select {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    padding: 8px;
+    margin-bottom: 15px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background: linear-gradient(to right, #7b5cff, #ff4ecd);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.error {
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- LEFT SIDE -->
+    <div class="left">
+        <h1>Smart Complaint System</h1>
+        
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="right">
+        <h2>Sign In</h2>
+
+        <form action="/login" method="POST" onsubmit="return validateLogin()">
+
+            <!-- ROLE -->
+            <label>Select Role</label>
+            <select name="role" id="role">
+                <option value="">Select Role</option>
+                <option value="admin">Admin</option>
+                <option value="user">User</option>
+            </select>
+
+            <!-- USERNAME -->
+            <label>Email Address</label>
+            <input type="text" id="username" name="username" placeholder="Enter Email">
+
+            <!-- PASSWORD -->
+            <label>Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter Password">
+
+            <a href="/register">Create New Account</a>
+
+            <button type="submit">CONTINUE</button>
+
+        </form>
+
+        <p id="errorMsg" class="error"></p>
+
+    </div>
+
+</div>
+
+<!-- VALIDATION SCRIPT -->
+<script>
+function validateLogin() {
+
+    let role = document.getElementById("role").value;
+    let username = document.getElementById("username").value.trim();
+    let password = document.getElementById("password").value.trim();
+    let error = document.getElementById("errorMsg");
+
+    error.innerText = "";
+
+    if (role === "") {
+        error.innerText = "Please select role ❌";
+        return false;
+    }
+
+    if (username === "") {
+        error.innerText = "Email required ❌";
+        return false;
+    }
+
+    let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+    if (!emailPattern.test(username)) {
+        error.innerText = "Enter valid email ❌";
+        return false;
+    }
+
+    if (password === "") {
+        error.innerText = "Password required ❌";
+        return false;
+    }
+
+    if (password.length < 5) {
+        error.innerText = "Password must be 5+ characters ❌";
+        return false;
+    }
+
+    return true;
+}
+</script>
+
+</body>
+</html>
